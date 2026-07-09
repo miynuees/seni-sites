@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>📚 내가 만든 사이트 모음</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: linear-gradient(135deg, #F8F9FE 0%, #F3F0FF 100%);
+  color: #2D3436;
+  min-height: 100vh;
+  padding: 30px 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  background: linear-gradient(135deg, #6C5CE7, #A29BFE);
+  color: white;
+  padding: 30px 24px;
+  border-radius: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 30px rgba(108, 92, 231, 0.25);
+}
+
+.header h1 {
+  font-family: 'Jua', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.section {
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-family: 'Jua', sans-serif;
+  font-size: 1.4rem;
+  color: #6C5CE7;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title .count {
+  background: #6C5CE7;
+  color: white;
+  font-size: 0.85rem;
+  padding: 2px 12px;
+  border-radius: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 카테고리별 색상 */
+.section-title.cat-art { color: #6C5CE7; }
+.section-title.cat-art .count { background: #6C5CE7; }
+
+.section-title.cat-202 { color: #ff6b9d; }
+.section-title.cat-202 .count { background: #ff6b9d; }
+
+.section-title.cat-share { color: #4FB585; }
+.section-title.cat-share .count { background: #4FB585; }
+.section-title.cat-fun { color: #FFB84D; }
+.section-title.cat-fun .count { background: #FFB84D; }
+
+.section-title.cat-widget { color: #0984E3; }
+.section-title.cat-widget .count { background: #0984E3; }
+
+.section-title.cat-personal { color: #C99A7A; }
+.section-title.cat-personal .count { background: #C99A7A; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 4px 20px rgba(108, 92, 231, 0.1);
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(108, 92, 231, 0.2);
+  border-color: #A29BFE;
+}
+
+.card.deployed {
+  border-color: #00B894;
+}
+
+.card.local {
+  border-color: #FDCB6E;
+}
+
+.card-emoji {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-family: 'Jua', sans-serif;
+  font-size: 1.2rem;
+  color: #2D3436;
+  margin-bottom: 6px;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: #636E72;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tag {
+  background: #F3F0FF;
+  color: #6C5CE7;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.tag.deployed {
+  background: #E8F8F2;
+  color: #00B894;
+}
+
+.tag.local {
+  background: #FFF9E6;
+  color: #F39C12;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6C5CE7, #A29BFE);
+  color: white;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #F3F0FF;
+  color: #6C5CE7;
+  border: 2px solid #E8E0FF;
+}
+
+.btn-secondary:hover {
+  background: #E8E0FF;
+}
+
+.btn-disabled {
+  background: #F1F2F6;
+  color: #B2BEC3;
+  cursor: not-allowed;
+}
+
+.add-card {
+  background: linear-gradient(135deg, #FFF9E6, #FFEDB3);
+  border: 2px dashed #FDCB6E;
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+  color: #B8860B;
+}
+
+.add-card h3 {
+  font-family: 'Jua', sans-serif;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.add-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.add-card code {
+  background: white;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  color: #6C5CE7;
+}
+
+.guide {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 30px;
+  border: 2px solid #E8E8FF;
+}
+
+.guide h2 {
+  font-family: 'Jua', sans-serif;
+  color: #6C5CE7;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.guide ol {
+  margin-left: 20px;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #2D3436;
+}
+
+.guide ol code {
+  background: #F3F0FF;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  color: #6C5CE7;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.8rem;
+  color: #B2BEC3;
+}
+
+/* 공부·참고 자료 카테고리 (강조) */
+.section-title.cat-study { color: #E67E22; }
+.section-title.cat-study .count { background: #E67E22; }
+
+.cards.single {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.card.featured {
+  background: linear-gradient(135deg, #FFFBEF 0%, #FFF0F5 100%);
+  border: 2px solid #FDCB6E;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(253, 203, 110, 0.2);
+}
+.card.featured:hover {
+  border-color: #E67E22;
+  box-shadow: 0 12px 32px rgba(253, 203, 110, 0.35);
+}
+.card.is-new::before {
+  content: "NEW ✨";
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  background: linear-gradient(135deg, #FF6B9D, #FDCB6E);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 99px;
+  box-shadow: 0 3px 10px rgba(255, 107, 157, 0.35);
+  letter-spacing: 0.5px;
+  animation: new-pulse 2.2s ease-in-out infinite;
+}
+@keyframes new-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@media (max-width: 600px) {
+  .cards { grid-template-columns: 1fr; }
+  .header h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>📚 내가 만든 사이트 모음</h1>
+    <p>미술 수업과 학급 운영을 위해 만든 작은 도구들이에요!</p>
+  </div>
+
+  <!-- ━━━━━━━━━━ 📖 공부·참고 자료 (강조) ━━━━━━━━━━ -->
+  <div class="section">
+    <h2 class="section-title cat-study">
+      📖 공부·참고 자료
+      <span class="count">1개</span>
+    </h2>
+    <div class="cards single">
+
+      <!-- UI 용어 공부 노트 -->
+      <div class="card deployed featured">
+        <div class="card-emoji">📖</div>
+        <div class="card-title">UI 용어 공부 노트</div>
+        <div class="card-desc">
+          화면에 나오는 요소들(버튼·칩·토글·모달·아코디언 등) <b>29개의 이름과 쓰임새</b>를 직접 만져보며 배우는 노트. Claude한테 요청 잘 전달하는 법·디자인 용어·문제 해결 템플릿까지 같이 정리!
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">공부 자료</span>
+          <span class="tag">참고용</span>
+          <span class="tag">인터랙티브</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/ui-notes/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/ui-notes" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━ 🎨 미술 수업용 ━━━━━━━━━━ -->
+  <div class="section">
+    <h2 class="section-title cat-art">
+      🎨 미술 수업용
+      <span class="count">12개</span>
+    </h2>
+    <div class="cards">
+
+      <!-- 미술 세특 정리 도우미 -->
+      <div class="card deployed is-new">
+        <div class="card-emoji">✍️</div>
+        <div class="card-title">미술 세특 정리 도우미</div>
+        <div class="card-desc">
+          학생이 자기 작품 설명을 링크·QR로 제출하면 실시간으로 수합되고, AI가 그 내용을 세특 문장으로 정리해주는 도구. 성의껏 쓴 학생일수록 분량이 늘어나요. 관리자 대시보드에서 학번별로 확인·수정 가능.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">AI 통합</span>
+          <span class="tag">세특</span>
+          <span class="tag">Firebase</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/art-saeteuk/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/art-saeteuk" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 미술 방탈출 시리즈 -->
+      <div class="card deployed">
+        <div class="card-emoji">🗝️</div>
+        <div class="card-title">미술 방탈출 시리즈</div>
+        <div class="card-desc">
+          작품 속으로 들어가는 점앤클릭 웹 방탈출. 1편 「아를의 방」(고흐), 2편 「비해당」(안평대군·몽유도원도). 분기 엔딩 4가지 + 엔딩 후 작품 갤러리까지 이어져요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">방탈출</span>
+          <span class="tag">미술 감상</span>
+          <span class="tag">시리즈</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/art-escape-room/" target="_blank" class="btn btn-primary">🎮 시리즈 열기</a>
+          <a href="https://github.com/miynuees/art-escape-room" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 국립현대미술관 추후활동 -->
+      <div class="card deployed">
+        <div class="card-emoji">🏛️</div>
+        <div class="card-title">국립현대미술관 추후활동</div>
+        <div class="card-desc">
+          MMCA 서울 현장체험학습 다녀온 뒤 하는 추후활동 자료. 한국 근현대미술 16작품을 네 가지 흐름으로 묶어 쉽게 풀어줘요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">미술 감상</span>
+          <span class="tag">현장체험</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/mmca-followup/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/mmca-followup" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 수행평가 채점기 -->
+      <div class="card deployed">
+        <div class="card-emoji">📱</div>
+        <div class="card-title">수행평가 채점기</div>
+        <div class="card-desc">
+          핸드폰으로 톡톡 눌러서 채점하는 도구. 4개 분반 89명 명단과 평가계획 채점 기준이 들어있어요. 비밀번호 잠금 + 데이터 암호화 적용.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">수행평가</span>
+          <span class="tag">비공개</span>
+          <span class="tag">Vercel</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://seni-grade.vercel.app/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <button class="btn btn-disabled" disabled>GitHub (비공개)</button>
+        </div>
+      </div>
+
+      <!-- 프롬프트 아틀리에 -->
+      <div class="card deployed">
+        <div class="card-emoji">🎨</div>
+        <div class="card-title">프롬프트 아틀리에</div>
+        <div class="card-desc">
+          고2 6차시 미술수업. "AI를 잘 쓰는 사람이 아니라, 왜 쓰는지 아는 사람을 만드는 수업". 감정→조형언어→Claude 대화→최종 이미지까지 5단계로 학생의 사고를 다듬는 도구.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">AI 통합</span>
+          <span class="tag">고2</span>
+          <span class="tag">6차시</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/prompt-atelier/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/prompt-atelier" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 마음 한 줄 (감정 일지) -->
+      <div class="card deployed">
+        <div class="card-emoji">🌙</div>
+        <div class="card-title">마음 한 줄</div>
+        <div class="card-desc">
+          하루 한 시간 한 번, 지금의 감정을 한 조각씩 남기는 감정 일지. 프롬프트 아틀리에 수업 전 일주일간 감정을 관찰하고 재료로 가져가는 선행 활동 도구.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">감정 기록</span>
+          <span class="tag">수업 선행 활동</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/emotion-journal/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/emotion-journal" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 빛과 그림자 스케치 도구 -->
+      <div class="card deployed">
+        <div class="card-emoji">💡</div>
+        <div class="card-title">빛과 그림자 스케치 도구</div>
+        <div class="card-desc">
+          고2 빛과 그림자 수업 2차시용 디지털 스케치 도구. 박스 안에 재료 배치를 그리고 한지에 비칠 그림자를 미리 확인할 수 있어요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">미술 수업</span>
+          <span class="tag">고2</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/light-shadow-sketch/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/light-shadow-sketch" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 예술가 인터뷰 챗봇 -->
+      <div class="card deployed">
+        <div class="card-emoji">🎨</div>
+        <div class="card-title">예술가 인터뷰 챗봇</div>
+        <div class="card-desc">
+          AI와 함께 5명의 유명 예술가(고흐, 프리다 칼로, 피카소, 백남준, 앤디 워홀)와 인터뷰할 수 있는 챗봇이에요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">AI 챗봇</span>
+          <span class="tag">미술 수업</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/artist-interview/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/artist-interview" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 작가의 세계를 탐험하다 (방탈출) -->
+      <div class="card deployed">
+        <div class="card-emoji">🗝️</div>
+        <div class="card-title">작가의 세계를 탐험하다 (방탈출)</div>
+        <div class="card-desc">
+          고등학교 미술 수업용 방탈출 제작 도구. 미니어처+QR 6단계 연출로 구성되고, 디지털 단서와 정답 제출까지 한 번에 진행할 수 있어요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">미술 수업</span>
+          <span class="tag">방탈출</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/artist-escape-room/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/artist-escape-room" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 서양화·회화 입시 가이드 -->
+      <div class="card deployed">
+        <div class="card-emoji">🎓</div>
+        <div class="card-title">서양화·회화 입시 가이드</div>
+        <div class="card-desc">
+          서양화/회화 전공 입시 상담용 도구. 성적별 대학 매칭, 실기 정보, 상담 멘트를 한 화면에서 확인할 수 있어요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">미술 입시</span>
+          <span class="tag">진로 상담</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/art-admission-guide/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/art-admission-guide" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 미술사 타임라인 -->
+      <div class="card local">
+        <div class="card-emoji">📜</div>
+        <div class="card-title">미술사 타임라인</div>
+        <div class="card-desc">
+          가로 스크롤 인터랙티브 타임라인. 11개 미술 사조 (르네상스 ~ 미디어아트)를 한눈에 볼 수 있어요.
+        </div>
+        <div class="card-tags">
+          <span class="tag local">⏳ 배포 전</span>
+          <span class="tag">미술사</span>
+        </div>
+        <div class="card-buttons">
+          <a href="5_보관/art_timeline.html" target="_blank" class="btn btn-primary">📂 로컬 파일 열기</a>
+          <button class="btn btn-disabled" disabled>GitHub (없음)</button>
+        </div>
+      </div>
+
+      <!-- 조형 요소·원리 월드컵 -->
+      <div class="card deployed">
+        <div class="card-emoji">🏆</div>
+        <div class="card-title">조형 요소·원리 월드컵</div>
+        <div class="card-desc">
+          선생님이 키워드와 소재를 뽑으면 학생들이 3분 동안 도형으로 표현하고, 이상형 월드컵 토너먼트로 우승작을 뽑는 실시간 미술 수업 게임. <strong>학생용 URL: <code>miynuees.github.io/misul-game/</code></strong>
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">실시간 멀티</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">조형 요소·원리</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/misul-game/teacher.html" target="_blank" class="btn btn-primary">🎮 선생님 콘솔 열기</a>
+          <a href="https://github.com/miynuees/misul-game" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━ 🏫 202용 (본인 반) ━━━━━━━━━━ -->
+  <div class="section">
+    <h2 class="section-title cat-202">
+      🏫 202용 (본인 반)
+      <span class="count">5개</span>
+    </h2>
+    <div class="cards">
+
+      <!-- 2반의 비밀일기 -->
+      <div class="card deployed">
+        <div class="card-emoji">📔</div>
+        <div class="card-title">2반의 비밀일기</div>
+        <div class="card-desc">
+          학급 일기장. 순서대로 돌려 쓰는 돌림일기와 선생님한테만 보이는 비밀일기를 나눠 쓰고, 캔버스로 페이지를 직접 꾸밀 수 있어요. 표지도 학생마다 다르게.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">2반 전용</span>
+          <span class="tag">Vercel</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://class-diary-202.vercel.app/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/class-diary-202" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 얼리버드 프로젝트 -->
+      <div class="card deployed">
+        <div class="card-emoji">🌅</div>
+        <div class="card-title">얼리버드 프로젝트</div>
+        <div class="card-desc">
+          일찍 등교한 학생이 직접 도장을 찍는 출석 도구. 도착 시각·오늘의 기분을 남기면 연속 출석(streak)이 쌓이고 식물이 자라요. 테마 색상 변경 지원.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">출석</span>
+          <span class="tag">Vercel</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://earlybird-seni.vercel.app/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/earlybird-seni" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 1인1역 (2반 전용) -->
+      <div class="card deployed">
+        <div class="card-emoji">👑</div>
+        <div class="card-title">1인1역 (2반 전용)</div>
+        <div class="card-desc">
+          본인 반(202)에서 실제로 운영 중인 1인1역 시스템. 학생별 역할 배정·활동 기록·통계 + 비밀번호 잠금 + DB 영구 저장으로 1년 데이터 안전하게 관리.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">2반 전용</span>
+          <span class="tag">Flask</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.pythonanywhere.com/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <button class="btn btn-disabled" disabled>PythonAnywhere</button>
+        </div>
+      </div>
+
+      <!-- 202 공쥬들의 신나는 청소시간 -->
+      <div class="card deployed">
+        <div class="card-emoji">👑</div>
+        <div class="card-title">202 공쥬들의 신나는 청소시간</div>
+        <div class="card-desc">
+          본인 반(202) 전용 청소 도구. 핑크/보라 파스텔 + 파티클 + 룰렛 애니메이션. PWA(앱 설치) 지원.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">2반 전용</span>
+          <span class="tag">PWA</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/class-cleaning/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/class-cleaning" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 2반 캐릭터 키우기 -->
+      <div class="card deployed">
+        <div class="card-emoji">🐣</div>
+        <div class="card-title">2반 캐릭터 키우기</div>
+        <div class="card-desc">
+          반 전체가 함께 칭찬을 모아 캐릭터를 성장시키는 게임. 4종 미스터리 알 (드래곤/여우/유니콘/펭귄) × 5단계 성장 + 명예의 전당. 선생님 터치 서명 지원.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">2반 전용</span>
+          <span class="tag">전자칠판</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/class-character/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/class-character" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━ 🖥️ 데스크톱 위젯 ━━━━━━━━━━ -->
+  <div class="section">
+    <h2 class="section-title cat-widget">
+      🖥️ 데스크톱 위젯
+      <span class="count">1개</span>
+    </h2>
+    <div class="cards single">
+
+      <!-- 쌤로그 -->
+      <div class="card deployed is-new">
+        <div class="card-emoji">🍀</div>
+        <div class="card-title">쌤로그</div>
+        <div class="card-desc">
+          바탕화면에 띄워두는 교사용 통합 대시보드. 홈·일정·할일·메모·시간표·진도표·출결 7개 탭. 급식과 학사일정은 나이스에서 자동으로 받아오고, 일정 색은 성격(시험·행사·학사·개인)에 따라 자동 분류돼요. 설치하면 바로 다 나옴.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 설치파일 완성</span>
+          <span class="tag">데스크톱</span>
+          <span class="tag">나이스 API</span>
+          <span class="tag">결석계 알리미 포함</span>
+        </div>
+        <div class="card-buttons">
+          <a href="4_작업파일/교무수첩_배포/out/" target="_blank" class="btn btn-primary">📂 설치파일 폴더 열기</a>
+          <button class="btn btn-disabled" disabled>내 PC 전용</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━ 🎉 재미·이벤트용 ━━━━━━━━━━ -->
+  <div class="section">
+    <h2 class="section-title cat-fun">
+      🎉 재미·이벤트용
+      <span class="count">4개</span>
+    </h2>
+    <div class="cards">
+
+      <!-- 보드게임 소모임 초대장 -->
+      <div class="card deployed">
+        <div class="card-emoji">🎲</div>
+        <div class="card-title">보드게임 소모임 초대장</div>
+        <div class="card-desc">
+          모바일 청첩장 스타일 초대장. 사행시·카운트다운·실시간 방명록이 들어있고, 주사위를 5번 누르면 숨은 내용이 나와요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">재미·행사용</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">검색 차단</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/boardgame-cafe/" target="_blank" class="btn btn-primary">🌐 초대장 열기</a>
+          <a href="https://github.com/miynuees/boardgame-cafe" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 혜화 어몽어스 -->
+      <div class="card local">
+        <div class="card-emoji">🔪</div>
+        <div class="card-title">혜화 어몽어스</div>
+        <div class="card-desc">
+          교실에서 몸으로 하는 마피아 게임 진행 도구. 선생님 화면에서 방을 만들면 학생들이 폰으로 접속해 비밀 역할·미션·투표를 진행해요. 실기기 테스트 후 배포 예정.
+        </div>
+        <div class="card-tags">
+          <span class="tag local">⏳ 배포 전</span>
+          <span class="tag">재미·행사용</span>
+          <span class="tag">실시간 멀티</span>
+          <span class="tag">Firebase</span>
+        </div>
+        <div class="card-buttons">
+          <a href="hyehwa-amongus/index.html" target="_blank" class="btn btn-primary">📂 로컬 파일 열기</a>
+          <button class="btn btn-disabled" disabled>GitHub (없음)</button>
+        </div>
+      </div>
+
+      <!-- 혜화 물풍선 대작전 -->
+      <div class="card deployed">
+        <div class="card-emoji">💦</div>
+        <div class="card-title">혜화 물풍선 대작전</div>
+        <div class="card-desc">
+          혜화 캐릭터가 주인공인 크레이지아케이드풍 물풍선 대전 게임. 혼자 도전(AI 1:1, 연승 랭킹)과 둘이서 대결(한 키보드 2P) 두 가지 모드. 상자를 부수면 아이템이 나오고, 상대를 물방울에 가두면 승리. PC 키보드 전용.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">재미·행사용</span>
+          <span class="tag">게임</span>
+          <span class="tag">2인 대전</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/hyehwa-balloon/" target="_blank" class="btn btn-primary">🎮 게임 하러 가기</a>
+          <a href="https://github.com/miynuees/hyehwa-balloon" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 세니네컷 (인생네컷 패러디) -->
+      <div class="card deployed">
+        <div class="card-emoji">📸</div>
+        <div class="card-title">세니네컷</div>
+        <div class="card-desc">
+          노트북 카메라로 6컷 찍고 마음에 드는 4컷을 골라 프레임·필터로 꾸미는 인생네컷 도구. 행사·재미용 시그니처. 필터 12종(뽀얀·밀키·피치 등 피부보정 포함) + 커스텀 프레임 최대 8개 저장(이름 지정 가능).
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">재미·행사용</span>
+          <span class="tag">카메라</span>
+          <span class="tag">Vercel</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://seni4cuts.vercel.app/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/seni4cuts" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━ 📤 공유용 ━━━━━━━━━━ -->
+  <div class="section">
+    <h2 class="section-title cat-share">
+      📤 공유용
+      <span class="count">10개</span>
+    </h2>
+    <div class="cards">
+
+      <!-- 두근두근 자리뽑기 -->
+      <div class="card deployed">
+        <div class="card-emoji">🌸</div>
+        <div class="card-title">두근두근 자리뽑기</div>
+        <div class="card-desc">
+          교실에서 바로 쓰는 자리 배정 PWA 도구. 학생 명단 입력 → 교실 모양 배치 → 룰렛·카드 뽑기 연출 → 결과 저장까지 한 번에! 테마 색상 4종 + 짝꿍 규칙 + 비밀 고정 배정 지원.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">공유용</span>
+          <span class="tag">PWA</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/seat-picker/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/seat-picker" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 학급일기장 (데모) -->
+      <div class="card deployed">
+        <div class="card-emoji">📖</div>
+        <div class="card-title">학급일기장 (데모)</div>
+        <div class="card-desc">
+          2반의 비밀일기 체험판. 돌림일기·비밀일기·캔버스 꾸미기를 서버 없이 브라우저에만 저장해서 돌려볼 수 있어요. 다른 선생님께 보여줄 때 이 주소로.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">데모 버전</span>
+          <span class="tag">공유용</span>
+          <span class="tag">학급 운영</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/class-diary-202-demo/" target="_blank" class="btn btn-primary">🌐 데모 버전 열기</a>
+          <a href="https://github.com/miynuees/class-diary-202-demo" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 뉴스 감상 활동지 -->
+      <div class="card deployed">
+        <div class="card-emoji">📰</div>
+        <div class="card-title">뉴스 감상 활동지</div>
+        <div class="card-desc">
+          뉴스 기사를 읽고 생각을 정리할 수 있도록 만든 온라인 활동지. 뉴닉(newneek.co) 등 어떤 기사든 붙여넣고 학생들이 바로 작성 가능해요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">활동지</span>
+          <span class="tag">공유용</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/news-activity-sheet/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/news-activity-sheet" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 선택과목 내비 -->
+      <div class="card deployed">
+        <div class="card-emoji">🧭</div>
+        <div class="card-title">선택과목 내비</div>
+        <div class="card-desc">
+          고교학점제 선택수업 교실 안내 도구. 어떤 형식의 엑셀이든(분반코드별/과목명) 첫 번째 시트만 있어도 자동 감지. 분반 시간표도 도구 안에서 직접 편집 가능(A~J 10개 분반 전부 지원). 학급별 시간표 이미지 저장 지원!
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">고교학점제</span>
+          <span class="tag">공유용</span>
+          <span class="tag">시간표</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/subject-navi/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/subject-navi" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 개인별 중간고사 시험 시간표 -->
+      <div class="card deployed">
+        <div class="card-emoji">📝</div>
+        <div class="card-title">개인별 중간고사 시험 시간표</div>
+        <div class="card-desc">
+          선택과목 엑셀을 올리면 학생별 개인 시험 시간표가 자동 생성. 시험 일정·고사실 배정을 도구 안에서 편집 가능하고 브라우저에 자동 저장돼요. 입실 시간 자동 계산, 30·40분 시험 시간 강조, 인쇄 모드 2종(여러명/1인 1페이지) 지원!
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">시험</span>
+          <span class="tag">공유용</span>
+          <span class="tag">시간표</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/exam-schedule/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/exam-schedule" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 교실 도구 메뉴얼 모음 -->
+      <div class="card deployed">
+        <div class="card-emoji">📚</div>
+        <div class="card-title">교실 도구 메뉴얼 모음</div>
+        <div class="card-desc">
+          학급 운영 도구 3종(칭찬 캐릭터 키우기·1인1역 다이어리·두근두근 청소 시간) 사용 메뉴얼을 한곳에 모은 허브 페이지. 다른 선생님들에게 공유할 때 이 주소만 보내면 OK!
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">메뉴얼</span>
+          <span class="tag">공유용</span>
+          <span class="tag">허브</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/class-tools-manuals/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/class-tools-manuals" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 두근두근 청소 시간 (공유용) -->
+      <div class="card deployed">
+        <div class="card-emoji">🧹</div>
+        <div class="card-title">두근두근 청소 시간 (공유용)</div>
+        <div class="card-desc">
+          청소 시간 역할을 카드 뽑기로 정하는 도구. 끝낸 사람이 카드를 탭하면 진행률이 차오르고, 다 끝나면 폭죽 연출까지! 파랑/초록 파스텔 + PWA 지원.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">공유용</span>
+          <span class="tag">PWA</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/cleaning-role-picker/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/cleaning-role-picker" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 칭찬 캐릭터 키우기 (공유용) -->
+      <div class="card deployed">
+        <div class="card-emoji">🌱</div>
+        <div class="card-title">칭찬 캐릭터 키우기 (공유용)</div>
+        <div class="card-desc">
+          2반 캐릭터 키우기의 공유 버전. 다른 선생님들이 자기 학급에서 바로 쓸 수 있도록 학급 명칭을 일반화. 동일한 4종 캐릭터·5단계 성장·명예의 전당 시스템.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">공유용</span>
+          <span class="tag">전자칠판</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/class-character-share/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/class-character-share" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 1인1역 다이어리 (공유용) -->
+      <div class="card deployed">
+        <div class="card-emoji">👥</div>
+        <div class="card-title">1인1역 다이어리 (공유용)</div>
+        <div class="card-desc">
+          학급 1인1역 관리 도구. 오늘 체크 + 진행률, 역할 편집, 연간 기록(역할별/학생별 탭), 개인별 달력, 백업/복원. 단일 HTML로 전자칠판·태블릿에서 바로 사용 가능.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">학급 운영</span>
+          <span class="tag">공유용</span>
+          <span class="tag">전자칠판</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/class-roles-tool/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/class-roles-tool" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+      <!-- 1인1역 관리 (데모) -->
+      <div class="card deployed">
+        <div class="card-emoji">📋</div>
+        <div class="card-title">1인1역 관리 (데모)</div>
+        <div class="card-desc">
+          서버 기반 1인1역 관리 시스템(Flask). 학생별 역할 배정·활동 기록·통계 확인 가능. PythonAnywhere에 올린 데모 버전이라 누구나 자유롭게 체험 가능.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">데모 버전</span>
+          <span class="tag">공유용</span>
+          <span class="tag">Flask</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.pythonanywhere.com/demo" target="_blank" class="btn btn-primary">🌐 데모 버전 열기</a>
+          <button class="btn btn-disabled" disabled>PythonAnywhere</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━ 🧶 개인용 ━━━━━━━━━━ -->
+  <div class="section">
+    <h2 class="section-title cat-personal">
+      🧶 개인용
+      <span class="count">2개</span>
+    </h2>
+    <div class="cards">
+
+      <!-- 뜨개 작업실 -->
+      <div class="card local">
+        <div class="card-emoji">🧶</div>
+        <div class="card-title">뜨개 작업실</div>
+        <div class="card-desc">
+          뜨면서 옆에 두고 쓰는 도구. 문어발 프로젝트 현황·단 카운터·PDF 도안 위에 펜으로 표시하기·완성 갤러리까지. 폰과 태블릿에 맞춰 만들었어요.
+        </div>
+        <div class="card-tags">
+          <span class="tag local">⏳ 배포 전</span>
+          <span class="tag">개인 취미</span>
+          <span class="tag">모바일</span>
+        </div>
+        <div class="card-buttons">
+          <a href="4_작업파일/뜨개작업실/index.html" target="_blank" class="btn btn-primary">📂 로컬 파일 열기</a>
+          <button class="btn btn-disabled" disabled>GitHub (없음)</button>
+        </div>
+      </div>
+
+      <!-- 오늘의 소비일기 -->
+      <div class="card deployed">
+        <div class="card-emoji">💸</div>
+        <div class="card-title">오늘의 소비일기</div>
+        <div class="card-desc">
+          충동·합리화 습관을 다스리는 개인 가계부. 지출을 기록하면서 소비 패턴을 돌아볼 수 있도록 설계된 일기형 도구예요.
+        </div>
+        <div class="card-tags">
+          <span class="tag deployed">✓ 배포완료</span>
+          <span class="tag">개인용</span>
+          <span class="tag">가계부</span>
+        </div>
+        <div class="card-buttons">
+          <a href="https://miynuees.github.io/consumption-diary/" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+          <a href="https://github.com/miynuees/consumption-diary" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 새 사이트 추가하기 가이드 -->
+  <div class="add-card">
+    <h3>➕ 새로운 사이트를 추가하려면?</h3>
+    <p>이 파일을 메모장이나 코드 편집기로 열어서 <code>&lt;!-- 카드 복사 시작 --&gt;</code> 부분 따라하면 돼요!</p>
+    <p>또는 클로드한테 "내 사이트 모음에 OOO 추가해줘"라고 부탁하면 자동으로 추가해줘요 😊</p>
+  </div>
+
+  <!-- 사용 가이드 -->
+  <div class="guide">
+    <h2>💡 사용 방법</h2>
+    <ol>
+      <li>이 파일을 <strong>바탕화면에 바로가기</strong>로 만들어두면 편해요</li>
+      <li>새 사이트 만들 때마다 클로드에게 "내 사이트 모음에 추가해줘"라고 말하기</li>
+      <li>각 카드의 <code>🌐 사이트 열기</code> 버튼을 누르면 바로 이동!</li>
+      <li>핸드폰에서도 잘 보이도록 반응형으로 만들었어요</li>
+    </ol>
+  </div>
+
+  <!-- 카드 템플릿 (주석) -->
+  <!--
+  카드 복사 시작 - 이 부분 복사해서 위에 붙여넣고 내용만 바꾸세요!
+
+  <div class="card deployed">  ← 배포된 사이트면 deployed, 작업중이면 local
+    <div class="card-emoji">🎨</div>
+    <div class="card-title">사이트 이름</div>
+    <div class="card-desc">
+      사이트 설명을 여기에 적으세요.
+    </div>
+    <div class="card-tags">
+      <span class="tag deployed">✓ 배포완료</span>
+      <span class="tag">태그1</span>
+      <span class="tag">태그2</span>
+    </div>
+    <div class="card-buttons">
+      <a href="여기에_사이트_URL" target="_blank" class="btn btn-primary">🌐 사이트 열기</a>
+      <a href="여기에_GitHub_URL" target="_blank" class="btn btn-secondary">📦 GitHub</a>
+    </div>
+  </div>
+
+  카드 복사 끝
+  -->
+
+  <div class="footer">
+    🎨 made with ❤️ for 미술 수업
+  </div>
+
+</div>
+
+<script>
+// 웹에 올라간 상태(http/https)에서는 내 PC 안의 파일을 가리키는 링크가 열리지 않는다.
+// 그런 버튼만 찾아 비활성 표시로 바꾼다. file:// 로 직접 열면 원래대로 동작.
+if (location.protocol !== 'file:') {
+  document.querySelectorAll('.card-buttons a[href]').forEach(function (link) {
+    if (/^https?:/i.test(link.getAttribute('href'))) return;
+    var button = document.createElement('button');
+    button.className = 'btn btn-disabled';
+    button.disabled = true;
+    button.textContent = '💻 내 PC에만 있음';
+    link.replaceWith(button);
+  });
+}
+</script>
+
+</body>
+</html>
